@@ -1,5 +1,5 @@
 
-BASENAME=draft-ab-tcp-ao-applicability
+BASENAME=draft-hab-tcp-ao-applicability
 EXT=.xml
 VERSION=00
 SOURCENAME=${BASENAME}${EXT}
