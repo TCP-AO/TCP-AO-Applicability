@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
+<!ENTITY RFC2234 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2234.xml">
+<!ENTITY RFC2629 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2629.xml">
+<!ENTITY RFC4234 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4234.xml">
+<!ENTITY nbsp    "&#160;">
+]>
+
+<?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
+
+<?rfc strict="yes" ?>
+<?rfc comments="no" ?>
+<?rfc inline="no" ?>
+<?rfc editing="no" ?>
+<?rfc toc="yes" ?>
+<?rfc tocompact="yes" ?>
+<?rfc tocdepth="3" ?>
+<?rfc symrefs="yes" ?>
+<?rfc sortrefs="yes" ?>
+<?rfc compact="yes" ?>
+<?rfc subcompact="no" ?>
+
+<rfc category="info"
+	ipr="trust200902"
+	docName="draft-hab-tcp-ao-applicability-00"
+	submissionType="IETF">
+
+<front>
+
+
+<title abbrev='TCP-AO Applicability Statement'>TCP-AO Applicability</title>
+
+        <author fullname="Melchior Aelmans" initials="M." surname="Aelmans">
+                <organization>Juniper Networks</organization>
+
+                <address>
+                        <postal>
+                                <street>Boeing Avenue 240</street>
+                                <code>1119 PZ</code>
+                                <city>Schiphol-Rijk</city>
+                                <country>The Netherlands</country>
+                        </postal>
+
+                        <email>maelmans@juniper.net</email>
+                </address>
+        </author>
+
+        <author fullname="Ron Bonica" initials="G." surname="Hankins">
+                <organization>Nokia</organization>
+
+                <address>
+                        <postal>
+                                <street>777 E. Middlefield Road</street>
+                                <code>94043</code>
+                                <city>Mountain View, CA</city>
+                                <country>USA</country>
+                        </postal>
+
+                        <email>greg.hankins@nokia.com</email>
+                </address>
+        </author>
+
+        <author fullname="Ron Bonica" initials="R." surname="Bonica">
+                <organization>Juniper Networks</organization>
+
+                <address>
+                        <postal>
+                                <street>2251 Corporate Park Drive</street>
+                                <code>20171</code>
+                                <city>Herndon, Virginia</city>
+                                <country>USA</country>
+                        </postal>
+
+                        <email>rbonica@juniper.net</email>
+                </address>
+        </author>
+
+
+
+<date/>
+
+<area>Transport</area>
+<workgroup>TCP Maintenance &amp; Minor Extensions (tcpm)</workgroup>
+<keyword>TCP-AO</keyword>
+
+<abstract>
+        <t>
+                This document discusses the properties, applicability and operational considerations
+                of using TCP-AO in different network and security scenarios. It intends to provide a
+                rough guide how TCP-AO can be deployed to secure TCP based protocols and applications.
+        </t>
+</abstract>
+
+</front>
+
+<!-- ***** MIDDLE MATTER ***** -->
+
+<middle>
+
+<section title="Introduction">
+
+	<t>
+	This document intends to explain the properties and applicability of
+	<xref target='RFC5925'>"The TCP Authentication Option"</xref> in different
+	deployment scenarios and highlight the improved security the technology offers when compared
+	to <xref target='RFC2385'>Protection of BGP Sessions via the TCP MD5 Signature Option"</xref>.
+	It also documents recommendations for deployment.
+	</t>
+
+</section>
+
+<section title="Problem Statement of using TCP MD5 Signature">
+
+	<t>
+	The TCP MD5 Signature (TCP MD5) is a TCP option that authenticates
+	TCP segments, including the TCP IPv4 pseudoheader, TCP header, and
+	TCP data.  It was developed to protect BGP sessions from spoofed TCP
+	segments, which could affect BGP data or the robustness of the TCP
+ 	connection itself [RFC2385][RFC4953].
+
+	There have been many recent concerns about TCP MD5.  Its use of a
+	simple keyed hash for authentication is problematic because there
+	have been escalating attacks on the algorithm itself [Wa05].  TCP MD5
+	also lacks both key-management and algorithm agility.  This document
+	adds the latter, and provides a simple key coordination mechanism
+	giving the ability to move from one key to another within the same
+	connection.  It does not however provide for complete cryptographic
+	key management to be handled in band of TCP, because TCP SYN segments
+	lack sufficient remaining space to handle such a negotiation (see
+ 	Section 7.6).  This document obsoletes the TCP MD5 option with a more
+	general TCP Authentication Option (TCP-AO).  This new option supports
+	the use of other, stronger hash functions, provides replay protection
+	for long-lived connections and across repeated instances of a single
+	connection, coordinates key changes between endpoints, and provides a
+	more explicit recommendation for external key management.  The result
+	is compatible with IPv6, and is fully compatible with proposed
+	requirements for a replacement for TCP MD5 [Ed07].
+
+	TCP-AO obsoletes TCP MD5, although a particular implementation may
+	support both mechanisms for backward compatibility.  For a given
+	connection, only one can be in use.  TCP MD5-protected connections
+	cannot be migrated to TCP-AO because TCP MD5 does not support any
+	changes to a connection's security algorithm once established.
+	</t>
+
+	<t>
+	Today's current routing protocols were geared towards a network with an irregular
+	topology and low degree of connectivity originally. When they are applied to Fat-Tree
+	topologies:
+	</t>
+
+</section>
+
+
+</middle>
+
+<back>
+
+	<references title="Normative References">
+		<?rfc include="reference.RFC.5925"?>
+		<?rfc include="reference.RFC.2385"?>
+	</references>
+
+</back>
+
+</rfc>
