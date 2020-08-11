@@ -151,7 +151,42 @@
 
 </section>
 
+        <section title="Implementation status - RFC EDITOR: REMOVE BEFORE PUBLICATION">
+            <t>
+                This section records the status of known implementations of the
+                protocol defined by this specification at the time of posting of
+                this Internet-Draft, and is based on a proposal described in
+                RFC7942. The description of implementations in this
+                section is intended to assist the IETF in its decision processes in
+                progressing drafts to RFCs.  Please note that the listing of any
+                individual implementation here does not imply endorsement by the
+                IETF. Furthermore, no effort has been spent to verify the
+                information presented here that was supplied by IETF contributors.
+                This is not intended as, and must not be construed to be, a catalog
+                of available implementations or their features. Readers are advised
+                to note that other implementations may exist.
+            </t>
+            <t>
+                The table below provides an overview (as of the moment of writing) of which vendors have produced implementations of inbound or outbound maximum prefix limits.
+                Each table cell shows the applicable configuration keywords if the vendor implemented the feature.
+            </t>
+            <texttable anchor="table_ex" title="Maximum prefix limits capabilities per implementation" style="all">
+                <ttcol align="center" width="20%">Vendor</ttcol>
+                <ttcol align="center">TCP-AO implemented</ttcol>
+                <c>Nokia SR OS</c><c>yes</c>
+                <c>Juniper Junos OS</c><c>yes *</c>
+		<c>Cisco IOS XR</c><c>yes</c>
+                <c>NIC.CZ BIRD</c><c>no</c>
+                <c>OpenBSD OpenBGPD</c><c>no</c>
+                <c>Arista EOS</c><c>no</c>
+                <c>Huawei VRP</c><c>no</c>
+            </texttable>
+            <t>
+                  *Not yet in main release
+           </t>
+        </section>
 
+	
 </middle>
 
 <back>
