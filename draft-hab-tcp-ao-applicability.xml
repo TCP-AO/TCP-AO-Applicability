@@ -150,6 +150,26 @@
 	</t>
 
 </section>
+	
+<section title="Applicability of TCP-AO">
+	<t> 
+	TCP-AO presents the oppurtunity to increase transport security for (long lived) TCP sessions.
+	Some example of these kind of sessions are:
+	</t>
+
+	<ul>
+		<li>
+		BGP: BGP sessions currently protected by MD5 should start leveraging TCP-AO as soon as 
+		it's supported in the BGP daemon.
+		</li>
+		<li>
+		LDP: TCP-AO authentication provides protection against spoofed TCP segments that can 
+		be introduced into the connection streams for LDP sessions.
+		</li>
+	</ul>
+	
+	
+</section>	
 
         <section title="Implementation status - RFC EDITOR: REMOVE BEFORE PUBLICATION">
             <t>
